@@ -1,0 +1,3 @@
+FROM praqma/network-multitool:latest
+
+COPY --from=troglobit/mcjoin:latest /usr/bin/mcjoin /usr/bin/mcjoin
