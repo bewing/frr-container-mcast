@@ -4,25 +4,25 @@ topology:
   nodes:
     router1:
       kind: linux
-      image: frrdump:latest
+      image: frrouting/frr:v8.3.0
       binds:
         - router1/daemons:/etc/frr/daemons
         - router1/frr.conf:/etc/frr/frr.conf
     router2:
       kind: linux
-      image: frrdump:latest
+      image: frrouting/frr:v8.3.0
       binds:
         - router2/daemons:/etc/frr/daemons
         - router2/frr.conf:/etc/frr/frr.conf
     router3:
       kind: linux
-      image: frrdump:latest
+      image: frrouting/frr:v8.3.0
       binds:
         - router3/daemons:/etc/frr/daemons
         - router3/frr.conf:/etc/frr/frr.conf
     PC1:
       kind: linux
-      image: multitool-mcast:latest
+      image: troglobit/mcjoin:latest
       exec:
       - "ip link set eth1 up"
       - "ip address add 192.168.11.2/24 dev eth1"
@@ -31,7 +31,7 @@ topology:
       - "mcjoin -d -t 5 -s -i eth1"
     PC2:
       kind: linux
-      image: multitool-mcast:latest
+      image: troglobit/mcjoin:latest
       exec:
       - "ip link set eth1 up"
       - "ip address add 192.168.13.2/24 dev eth1"
